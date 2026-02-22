@@ -29,9 +29,11 @@ const Cart = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-6">
           {cart.map((item) => (
-            <div key={`${item.id}-${item.size}`} className="bg-surface border border-border p-4 md:p-6 flex gap-6">
-              <Link to={`/product/${item.id}`} className="flex-shrink-0">
-                <img src={item.image} alt={item.name} className="w-24 h-24 md:w-32 md:h-32 object-cover border border-border" />
+            <div key={`${item.id}-${item.size}`} className="bg-surface border border-border p-4 md:p-6 flex flex-col sm:flex-row gap-4 md:gap-6">
+              <Link to={`/product/${item.id}`} className="flex-shrink-0 w-full sm:w-32">
+                <div className="aspect-square bg-white p-2 border border-border flex items-center justify-center">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                </div>
               </Link>
 
               <div className="flex-1 flex flex-col justify-between">
