@@ -44,6 +44,9 @@ const Checkout = () => {
         customerName: customerData.name,
         customerEmail: customerData.email,
         customerPhone: customerData.phone,
+        customerAddress: customerData.address,
+        customerCity: customerData.city,
+        customerPincode: customerData.pincode,
         status: 'pending',
         createdAt: new Date()
       };
