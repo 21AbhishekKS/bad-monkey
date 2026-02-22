@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "bad-monkey-store"
+  },
+  "targets": {
+    "bad-monkey-store": {
+      "hosting": {
+        "customer": [
+          "bad-monkey-store"
+        ],
+        "admin": [
+          "bad-monkey-admin"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
