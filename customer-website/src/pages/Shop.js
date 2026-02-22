@@ -50,13 +50,13 @@ const Shop = () => {
         <p className="text-neutral-500 text-lg">Browse our complete collection of imported sneakers</p>
       </div>
 
-      <div className="mb-12 space-y-6">
+      <div className="mb-8 md:mb-12 space-y-4 md:space-y-6">
         <div>
-          <h3 className="font-subheading text-white text-sm tracking-widest uppercase mb-3">CATEGORY</h3>
-          <div className="flex flex-wrap gap-3">
+          <h3 className="font-subheading text-white text-xs md:text-sm tracking-widest uppercase mb-3">CATEGORY</h3>
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {categories.map(category => (
               <button key={category} onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 border font-subheading text-xs tracking-wider uppercase transition-all ${
+                className={`px-4 md:px-6 py-2 border font-subheading text-xs tracking-wider uppercase transition-all ${
                   selectedCategory === category
                     ? 'bg-brand-primary text-black border-brand-primary'
                     : 'bg-transparent text-white border-white/20 hover:border-brand-primary'
@@ -66,11 +66,11 @@ const Shop = () => {
         </div>
 
         <div>
-          <h3 className="font-subheading text-white text-sm tracking-widest uppercase mb-3">GENDER</h3>
-          <div className="flex flex-wrap gap-3">
+          <h3 className="font-subheading text-white text-xs md:text-sm tracking-widest uppercase mb-3">GENDER</h3>
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {genders.map(gender => (
               <button key={gender} onClick={() => setSelectedGender(gender)}
-                className={`px-6 py-2 border font-subheading text-xs tracking-wider uppercase transition-all ${
+                className={`px-4 md:px-6 py-2 border font-subheading text-xs tracking-wider uppercase transition-all ${
                   selectedGender === gender
                     ? 'bg-brand-primary text-black border-brand-primary'
                     : 'bg-transparent text-white border-white/20 hover:border-brand-primary'
