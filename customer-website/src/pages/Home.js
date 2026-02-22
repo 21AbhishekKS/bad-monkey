@@ -26,23 +26,23 @@ const Home = () => {
 
   return (
     <div>
-      <section className="relative h-screen flex items-center justify-center overflow-hidden"
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
         style={{
           backgroundImage: 'url(https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}>
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 text-center px-4 max-w-5xl">
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-bold uppercase tracking-tight mb-6">
-            <span className="text-white">THE STREET</span><br />
-            <span className="text-brand-primary">NEVER SLEEPS</span>
+        <div className="relative z-10 text-center px-4 max-w-5xl w-full py-20">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold uppercase tracking-tight mb-4 md:mb-6">
+            <span className="text-white block">THE STREET</span>
+            <span className="text-brand-primary block mt-2">NEVER SLEEPS</span>
           </h1>
-          <p className="text-neutral-100 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-neutral-100 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Bengaluru's premier destination for imported sneakers and premium footwear
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-3 bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-4 hover:bg-white transition-all">
-            SHOP NOW<ArrowRight className="w-5 h-5" />
+          <Link to="/shop" className="inline-flex items-center gap-2 md:gap-3 bg-brand-primary text-black font-subheading text-xs sm:text-sm tracking-widest uppercase px-6 sm:px-8 py-3 sm:py-4 hover:bg-white transition-all">
+            SHOP NOW<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
           </Link>
         </div>
       </section>
