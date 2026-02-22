@@ -8,7 +8,7 @@ import { PAYMENT_CONFIG } from '../config/payment';
 const CheckoutSuccess = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { cart, getCartTotal, clearCart } = useCart();
+  const { getCartTotal, clearCart } = useCart();
   const [copied, setCopied] = useState(false);
   const orderId = searchParams.get('orderId');
   const totalAmount = getCartTotal();
