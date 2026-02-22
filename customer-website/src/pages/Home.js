@@ -64,10 +64,19 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`}>
-                <div className="group bg-surface border border-border hover:border-brand-primary transition-all">
-                  <div className="aspect-square bg-white p-4 flex items-center justify-center overflow-hidden">
+                <div className={`group bg-surface border border-border hover:border-brand-primary transition-all ${
+                  product.stock <= 0 ? 'opacity-60' : ''
+                }`}>
+                  <div className="aspect-square bg-white p-4 flex items-center justify-center overflow-hidden relative">
                     <img src={product.image} alt={product.name}
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    {product.stock <= 0 && (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <span className="bg-white text-black font-subheading text-xs tracking-widest uppercase px-4 py-2">
+                          OUT OF STOCK
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-3 md:p-4">
                     <h3 className="font-subheading text-white text-xs md:text-sm tracking-wider uppercase mb-2 line-clamp-2">{product.name}</h3>
@@ -75,7 +84,11 @@ const Home = () => {
                       <span className="bg-brand-primary text-black px-2 md:px-3 py-1 text-xs md:text-sm font-bold">
                         ₹{product.price?.toLocaleString()}
                       </span>
-                      <span className="text-neutral-500 text-xs uppercase tracking-wider">{product.category}</span>
+                      <span className={`font-subheading text-xs tracking-wider uppercase ${
+                        product.stock > 0 ? 'text-white' : 'text-neutral-600'
+                      }`}>
+                        {product.stock > 0 ? 'IN STOCK' : 'OUT OF STOCK'}
+                      </span>
                     </div>
                   </div>
                 </div>
