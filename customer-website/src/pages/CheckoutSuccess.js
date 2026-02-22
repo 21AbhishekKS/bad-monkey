@@ -11,7 +11,8 @@ const CheckoutSuccess = () => {
   const { getCartTotal, clearCart } = useCart();
   const [copied, setCopied] = useState(false);
   const orderId = searchParams.get('orderId');
-  const totalAmount = getCartTotal();
+  const amount = searchParams.get('amount') || getCartTotal();
+  const totalAmount = parseFloat(amount);
 
   useEffect(() => {
     if (!orderId) {

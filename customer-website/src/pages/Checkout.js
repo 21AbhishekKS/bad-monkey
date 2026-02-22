@@ -12,7 +12,10 @@ const Checkout = () => {
   const [customerData, setCustomerData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    address: '',
+    city: '',
+    pincode: ''
   });
 
   const handleChange = (e) => {
@@ -27,7 +30,6 @@ const Checkout = () => {
     setLoading(true);
 
     try {
-      // Create order in Firestore
       const orderData = {
         items: cart.map(item => ({
           id: item.id,
@@ -41,14 +43,17 @@ const Checkout = () => {
         customerName: customerData.name,
         customerEmail: customerData.email,
         customerPhone: customerData.phone,
+        customerAddress: customerData.address,
+        customerCity: customerData.city,
+        customerPincode: customerData.pincode,
+        fullAddress: `${customerData.address}, ${customerData.city}, ${customerData.pincode}`,
         status: 'pending',
         createdAt: new Date()
       };
 
       const docRef = await addDoc(collection(db, 'orders'), orderData);
       
-      // Navigate to success page with order ID
-      navigate(`/checkout/success?orderId=${docRef.id}`);
+      navigate(`/checkout/success?orderId=${docRef.id}&amount=${getCartTotal()}`);
     } catch (error) {
       console.error('Error creating order:', error);
       alert('Failed to place order. Please try again.');
@@ -62,7 +67,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="pt-32 pb-24 px-4 md:px-8 max-w-[1000px] mx-auto min-h-screen">
+    <div className="pt-32 pb-24 px-4 md:px-8 max-w-[1200px] mx-auto min-h-screen">
       <h1 className="font-heading text-4xl md:text-6xl font-bold uppercase mb-12">
         <span className="text-brand-primary">CHECKOUT</span>
       </h1>
@@ -78,50 +83,60 @@ const Checkout = () => {
               <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
                 FULL NAME *
               </label>
-              <input
-                type="text"
-                name="name"
-                value={customerData.name}
-                onChange={handleChange}
-                required
-                className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary"
-              />
+              <input type="text" name="name" value={customerData.name} onChange={handleChange} required
+                className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary" />
             </div>
 
             <div>
               <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
                 EMAIL *
               </label>
-              <input
-                type="email"
-                name="email"
-                value={customerData.email}
-                onChange={handleChange}
-                required
-                className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary"
-              />
+              <input type="email" name="email" value={customerData.email} onChange={handleChange} required
+                className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary" />
             </div>
 
             <div>
               <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
                 PHONE *
               </label>
-              <input
-                type="tel"
-                name="phone"
-                value={customerData.phone}
-                onChange={handleChange}
-                required
+              <input type="tel" name="phone" value={customerData.phone} onChange={handleChange} required
                 pattern="[0-9+\-\s()]+"
                 className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary"
-              />
+                placeholder="+91 98765 43210" />
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-5 hover:bg-white transition-all flex items-center justify-center gap-3 disabled:opacity-50"
-            >
+            <div>
+              <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
+                ADDRESS *
+              </label>
+              <textarea name="address" value={customerData.address} onChange={handleChange} required rows="3"
+                className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary resize-none"
+                placeholder="Street address, apartment, building name" />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
+                  CITY *
+                </label>
+                <input type="text" name="city" value={customerData.city} onChange={handleChange} required
+                  className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary"
+                  placeholder="Bengaluru" />
+              </div>
+
+              <div>
+                <label className="font-subheading text-white text-sm tracking-widest uppercase mb-2 block">
+                  PINCODE *
+                </label>
+                <input type="text" name="pincode" value={customerData.pincode} onChange={handleChange} required
+                  pattern="[0-9]{6}"
+                  className="w-full bg-surface border border-border text-white px-4 py-3 focus:outline-none focus:border-brand-primary"
+                  placeholder="560001" />
+              </div>
+            </div>
+
+            <button type="submit" disabled={loading}
+              className="w-full bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-5 hover:bg-white transition-all flex items-center justify-center gap-3 disabled:opacity-50">
               {loading ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
@@ -158,10 +173,11 @@ const Checkout = () => {
               <span className="text-brand-primary">₹{getCartTotal().toLocaleString()}</span>
             </div>
 
-            <div className="text-neutral-500 text-xs">
+            <div className="text-neutral-500 text-xs space-y-1">
               <p>✓ Secure checkout</p>
               <p>✓ No payment gateway charges</p>
               <p>✓ Pay via UPI after order confirmation</p>
+              <p>✓ Free delivery within Bengaluru</p>
             </div>
           </div>
         </div>

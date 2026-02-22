@@ -67,17 +67,20 @@ const Orders = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 p-4 bg-background border border-border">
                 <div className="flex items-start gap-2">
-                  <User className="w-4 h-4 text-brand-primary mt-1" />
+                  <User className="w-4 h-4 text-brand-primary mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-white text-sm font-semibold">{order.customerName}</p>
+                    {order.fullAddress && (
+                      <p className="text-neutral-500 text-xs mt-1">{order.fullAddress}</p>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Mail className="w-4 h-4 text-brand-primary mt-1" />
-                  <p className="text-neutral-500 text-sm">{order.customerEmail}</p>
+                  <Mail className="w-4 h-4 text-brand-primary mt-1 flex-shrink-0" />
+                  <p className="text-neutral-500 text-sm break-all">{order.customerEmail}</p>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Phone className="w-4 h-4 text-brand-primary mt-1" />
+                  <Phone className="w-4 h-4 text-brand-primary mt-1 flex-shrink-0" />
                   <a href={`tel:${order.customerPhone}`} className="text-neutral-500 hover:text-brand-primary text-sm transition-colors">
                     {order.customerPhone}
                   </a>

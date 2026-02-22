@@ -26,23 +26,23 @@ const Home = () => {
 
   return (
     <div>
-      <section className="relative h-screen flex items-center justify-center overflow-hidden"
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
         style={{
           backgroundImage: 'url(https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}>
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 text-center px-4 max-w-5xl">
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-bold uppercase tracking-tight mb-6">
-            <span className="text-white">THE STREET</span><br />
-            <span className="text-brand-primary">NEVER SLEEPS</span>
+        <div className="relative z-10 text-center px-4 max-w-5xl w-full py-20">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold uppercase tracking-tight mb-4 md:mb-6">
+            <span className="text-white block">THE STREET</span>
+            <span className="text-brand-primary block mt-2">NEVER SLEEPS</span>
           </h1>
-          <p className="text-neutral-100 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-neutral-100 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Bengaluru's premier destination for imported sneakers and premium footwear
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-3 bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-4 hover:bg-white transition-all">
-            SHOP NOW<ArrowRight className="w-5 h-5" />
+          <Link to="/shop" className="inline-flex items-center gap-2 md:gap-3 bg-brand-primary text-black font-subheading text-xs sm:text-sm tracking-widest uppercase px-6 sm:px-8 py-3 sm:py-4 hover:bg-white transition-all">
+            SHOP NOW<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
           </Link>
         </div>
       </section>
@@ -61,21 +61,34 @@ const Home = () => {
             <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent animate-spin" />
           </div>
         ) : featuredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`}>
-                <div className="group bg-surface border border-border hover:border-brand-primary transition-all">
-                  <div className="aspect-[4/5] overflow-hidden">
+                <div className={`group bg-surface border border-border hover:border-brand-primary transition-all ${
+                  product.stock <= 0 ? 'opacity-60' : ''
+                }`}>
+                  <div className="aspect-square bg-white p-4 flex items-center justify-center overflow-hidden relative">
                     <img src={product.image} alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    {product.stock <= 0 && (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <span className="bg-white text-black font-subheading text-xs tracking-widest uppercase px-4 py-2">
+                          OUT OF STOCK
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-subheading text-white text-sm tracking-wider uppercase mb-2">{product.name}</h3>
-                    <div className="flex items-center justify-between">
-                      <span className="bg-brand-primary text-black px-3 py-1 text-sm font-bold">
+                  <div className="p-3 md:p-4">
+                    <h3 className="font-subheading text-white text-xs md:text-sm tracking-wider uppercase mb-2 line-clamp-2">{product.name}</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                      <span className="bg-brand-primary text-black px-2 md:px-3 py-1 text-xs md:text-sm font-bold">
                         ₹{product.price?.toLocaleString()}
                       </span>
-                      <span className="text-neutral-500 text-xs uppercase tracking-wider">{product.category}</span>
+                      <span className={`font-subheading text-xs tracking-wider uppercase ${
+                        product.stock > 0 ? 'text-white' : 'text-neutral-600'
+                      }`}>
+                        {product.stock > 0 ? 'IN STOCK' : 'OUT OF STOCK'}
+                      </span>
                     </div>
                   </div>
                 </div>

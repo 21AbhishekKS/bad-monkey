@@ -42,6 +42,10 @@ const ProductDetail = () => {
       alert('Please select a size');
       return;
     }
+    if (product.stock <= 0) {
+      alert('Sorry, this product is out of stock');
+      return;
+    }
     if (product) {
       addToCart(product, quantity, selectedSize);
       alert(`${product.name} (Size: ${selectedSize}) added to cart!`);
@@ -63,12 +67,12 @@ const ProductDetail = () => {
 
   return (
     <div className="pt-32 pb-24 px-4 md:px-8 max-w-[1600px] mx-auto min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="aspect-square bg-surface border border-border overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <div className="aspect-square bg-white border border-border overflow-hidden p-4 md:p-8 flex items-center justify-center">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
 
@@ -108,7 +112,7 @@ const ProductDetail = () => {
                     setSizeSystem(system);
                     setSelectedSize('');
                   }}
-                  className={`px-4 py-2 font-subheading text-xs tracking-wider uppercase transition-all ${
+                  className={`flex-1 sm:flex-none px-4 py-2 font-subheading text-xs tracking-wider uppercase transition-all ${
                     sizeSystem === system
                       ? 'bg-brand-primary text-black'
                       : 'bg-surface text-white border border-border hover:border-brand-primary'
@@ -120,12 +124,12 @@ const ProductDetail = () => {
             </div>
 
             {/* Size Options */}
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 md:gap-3">
               {availableSizes.map(size => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`py-3 font-subheading text-sm tracking-wider transition-all ${
+                  className={`py-2 md:py-3 font-subheading text-sm tracking-wider transition-all ${
                     selectedSize === size
                       ? 'bg-brand-primary text-black'
                       : 'bg-surface text-white border border-border hover:border-brand-primary'
@@ -168,10 +172,15 @@ const ProductDetail = () => {
 
           <button
             onClick={handleAddToCart}
-            className="w-full bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-5 hover:bg-white transition-all flex items-center justify-center gap-3"
+            disabled={product.stock <= 0}
+            className={`w-full font-subheading text-sm tracking-widest uppercase px-8 py-5 transition-all flex items-center justify-center gap-3 ${
+              product.stock <= 0
+                ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed'
+                : 'bg-brand-primary text-black hover:bg-white'
+            }`}
           >
             <ShoppingCart className="w-5 h-5" />
-            ADD TO CART
+            {product.stock <= 0 ? 'OUT OF STOCK' : 'ADD TO CART'}
           </button>
 
           <div className="mt-8 p-6 border border-border">
@@ -181,7 +190,9 @@ const ProductDetail = () => {
             <div className="space-y-2 text-neutral-500 text-sm">
               <p>• 100% Authentic imported product</p>
               <p>• Premium quality materials</p>
-              <p>• In stock: {product.stock} units</p>
+              <p className={product.stock > 0 ? 'text-white font-bold' : 'text-brand-secondary'}>
+                • {product.stock > 0 ? `In stock: ${product.stock} units` : 'Currently out of stock'}
+              </p>
               <p>• Contact for size availability</p>
             </div>
           </div>
