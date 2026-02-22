@@ -12,7 +12,10 @@ const Checkout = () => {
   const [customerData, setCustomerData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    address: '',
+    city: '',
+    pincode: ''
   });
 
   const handleChange = (e) => {
