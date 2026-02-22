@@ -172,10 +172,15 @@ const ProductDetail = () => {
 
           <button
             onClick={handleAddToCart}
-            className="w-full bg-brand-primary text-black font-subheading text-sm tracking-widest uppercase px-8 py-5 hover:bg-white transition-all flex items-center justify-center gap-3"
+            disabled={product.stock <= 0}
+            className={`w-full font-subheading text-sm tracking-widest uppercase px-8 py-5 transition-all flex items-center justify-center gap-3 ${
+              product.stock <= 0
+                ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed'
+                : 'bg-brand-primary text-black hover:bg-white'
+            }`}
           >
             <ShoppingCart className="w-5 h-5" />
-            ADD TO CART
+            {product.stock <= 0 ? 'OUT OF STOCK' : 'ADD TO CART'}
           </button>
 
           <div className="mt-8 p-6 border border-border">
@@ -185,7 +190,9 @@ const ProductDetail = () => {
             <div className="space-y-2 text-neutral-500 text-sm">
               <p>• 100% Authentic imported product</p>
               <p>• Premium quality materials</p>
-              <p>• In stock: {product.stock} units</p>
+              <p className={product.stock > 0 ? 'text-white font-bold' : 'text-brand-secondary'}>
+                • {product.stock > 0 ? `In stock: ${product.stock} units` : 'Currently out of stock'}
+              </p>
               <p>• Contact for size availability</p>
             </div>
           </div>
