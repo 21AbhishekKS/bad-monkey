@@ -1,0 +1,188 @@
+{
+  "brand_identity": {
+    "name": "Bad Monkey",
+    "ethos": "The Street Never Sleeps.",
+    "vibe": "Urban Brutalist Luxury",
+    "target_audience": "Sneakerheads, Hypebeasts, Gen Z (18-35)",
+    "core_values": [
+      "Authenticity",
+      "Edgy",
+      "Street-First",
+      "High-Energy"
+    ]
+  },
+  "design_system": {
+    "theme": {
+      "mode": "dark",
+      "strategy": "Brutalist Dark Mode with Neon Accents"
+    },
+    "colors": {
+      "base": {
+        "background": "#0a0a0a",
+        "surface": "#121212",
+        "foreground": "#fafafa",
+        "border": "#27272a"
+      },
+      "brand": {
+        "primary": "#D4FF00",
+        "secondary": "#FF3B30",
+        "accent": "#00E0FF"
+      },
+      "neutral": {
+        "100": "#f5f5f5",
+        "500": "#737373",
+        "900": "#171717"
+      }
+    },
+    "typography": {
+      "headings": {
+        "font_family": "Syne, sans-serif",
+        "weights": [700, 800],
+        "tracking": "-0.02em",
+        "casing": "uppercase"
+      },
+      "subheadings": {
+        "font_family": "Space Grotesk, monospace",
+        "weights": [500],
+        "tracking": "0.05em",
+        "casing": "uppercase"
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "weights": [400, 500],
+        "line_height": "1.6"
+      }
+    },
+    "layout": {
+      "container_max_width": "1600px",
+      "grid_columns": 12,
+      "spacing_scale": {
+        "section_y": "py-24 md:py-32",
+        "element_gap": "gap-6 md:gap-12"
+      },
+      "border_radius": {
+        "buttons": "0px",
+        "cards": "0px",
+        "inputs": "0px"
+      }
+    }
+  },
+  "visual_enhancers": {
+    "textures": [
+      "noise-overlay",
+      "grid-lines"
+    ],
+    "effects": [
+      "glitch-on-hover",
+      "marquee-scrolling",
+      "parallax-scroll"
+    ],
+    "motion": {
+      "library": "framer-motion",
+      "scroll": "lenis",
+      "defaults": {
+        "duration": 0.4,
+        "ease": "[0.22, 1, 0.36, 1]"
+      }
+    }
+  },
+  "components": {
+    "navbar": {
+      "style": "Sticky, Glassmorphism (Backdrop Blur)",
+      "elements": ["Logo (Left)", "Nav Links (Center)", "Cart/Search (Right)"],
+      "background": "bg-black/80 backdrop-blur-md border-b border-white/10"
+    },
+    "hero": {
+      "style": "Full-screen immersive with massive typography overlay",
+      "content": "Video background or High-Res Urban Image with 'Glitch' text effect"
+    },
+    "product_card": {
+      "style": "Raw Industrial",
+      "features": [
+        "No border radius (sharp edges)",
+        "1px solid border (zinc-800)",
+        "Image aspect ratio 4:5",
+        "Hover: Image Swap or Zoom",
+        "Price tag: Neon background with Black text"
+      ]
+    },
+    "buttons": {
+      "primary": "bg-[#D4FF00] text-black hover:bg-white hover:text-black uppercase font-bold tracking-wider rounded-none px-8 py-4 transition-all",
+      "secondary": "border border-white/20 text-white hover:bg-white hover:text-black uppercase tracking-wider rounded-none px-8 py-4 transition-all"
+    },
+    "marquee": {
+      "text": "BAD MONKEY • EST 2023 • BENGALURU • LIMITED DROPS • WORLDWIDE SHIPPING •",
+      "style": "bg-white text-black py-3 font-bold uppercase tracking-widest text-sm"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero": {
+        "url": "https://images.pexels.com/photos/33544795/pexels-photo-33544795.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Neon Urban Night Scene",
+        "position": "Hero Background"
+      },
+      "about_us": {
+        "url": "https://images.pexels.com/photos/2245032/pexels-photo-2245032.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Urban Youth Fashion Model",
+        "position": "About Section"
+      },
+      "categories": [
+        {
+          "name": "Sneakers",
+          "url": "https://images.unsplash.com/photo-1760302318631-a8d342cd4951?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBpbmR1c3RyaWFsJTIwc25lYWtlciUyMHN0b3JlJTIwaW50ZXJpb3IlMjBjb25jcmV0ZSUyMGFlc3RoZXRpY3xlbnwwfHx8fDE3NzE3NDk3ODV8MA&ixlib=rb-4.1.0&q=85",
+          "alt": "Sneaker Shelves"
+        },
+        {
+          "name": "Apparel",
+          "url": "https://images.unsplash.com/photo-1654764745582-69893ee8a985?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjB1cmJhbiUyMHlvdXRoJTIwc3RyZWV0d2VhciUyMGZhc2hpb24lMjBtb2RlbHxlbnwwfHx8fDE3NzE3NDk3ODN8MA&ixlib=rb-4.1.0&q=85",
+          "alt": "Streetwear Apparel"
+        }
+      ],
+      "products": [
+        {
+          "name": "Nike Air Max 90 Black",
+          "url": "https://images.unsplash.com/photo-1610664676282-55c8de64f746?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHw0fHxzbmVha2VyJTIwcHJvZHVjdCUyMHNob3QlMjB3aGl0ZSUyMGJhY2tncm91bmQlMjBuaWtlJTIwYWRpZGFzJTIwaGlnaCUyMHRvcHxlbnwwfHx8fDE3NzE3NDk3OTh8MA&ixlib=rb-4.1.0&q=85",
+          "price": "₹12,999"
+        },
+        {
+          "name": "Adidas Forum Low",
+          "url": "https://images.unsplash.com/photo-1715773408837-b7074beb12d5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxzbmVha2VyJTIwcHJvZHVjdCUyMHNob3QlMjB3aGl0ZSUyMGJhY2tncm91bmQlMjBuaWtlJTIwYWRpZGFzJTIwaGlnaCUyMHRvcHxlbnwwfHx8fDE3NzE3NDk3OTh8MA&ixlib=rb-4.1.0&q=85",
+          "price": "₹9,999"
+        },
+        {
+          "name": "Air Jordan 3 Retro",
+          "url": "https://images.pexels.com/photos/10112911/pexels-photo-10112911.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "price": "₹18,999"
+        },
+        {
+          "name": "Puma RS-X",
+          "url": "https://images.unsplash.com/photo-1715694031128-3ca9662a387b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwzfHxzbmVha2VyJTIwcHJvZHVjdCUyMHNob3QlMjB3aGl0ZSUyMGJhY2tncm91bmQlMjBuaWtlJTIwYWRpZGFzJTIwaGlnaCUyMHRvcHxlbnwwfHx8fDE3NzE3NDk3OTh8MA&ixlib=rb-4.1.0&q=85",
+          "price": "₹8,499"
+        }
+      ]
+    },
+    "icons": {
+      "library": "lucide-react",
+      "styles": "stroke-1 md:stroke-[1.5]"
+    }
+  },
+  "instructions_to_main_agent": [
+    "INSTALL: lenis framer-motion clsx tailwind-merge @radix-ui/react-slot lucide-react",
+    "SETUP: Configure Tailwind with custom colors (brand-primary: #D4FF00, brand-bg: #0a0a0a).",
+    "FONTS: Import 'Syne' and 'Space Grotesk' from Google Fonts immediately.",
+    "LAYOUT: Use a strict grid. Avoid rounded corners on buttons/cards - keep it brutalist.",
+    "CRITICAL: Do NOT use default rounded-lg on cards. Override Shadcn defaults to rounded-none.",
+    "NAVIGATION: Create a 'Mega Menu' for the shop categories.",
+    "WHATSAPP: Add a floating WhatsApp button (fixed bottom-right, z-50) using pure SVG/Lucide icon.",
+    "MAP: Use a dark-themed map iframe for the Store Locator page.",
+    "TESTING: Add data-testid to all interactive elements (buttons, inputs, links)."
+  ],
+  "universal_guidelines": [
+    "Do not use gradients for backgrounds, use solid dark colors with noise textures.",
+    "Use 24px-32px blur for glassmorphism.",
+    "Ensure 3:1 contrast ratio for all text.",
+    "Mobile-first: Stack grids to 1 column on mobile, 4 on desktop.",
+    "Use 'group' and 'group-hover' tailwind classes for card hover effects."
+  ]
+}
