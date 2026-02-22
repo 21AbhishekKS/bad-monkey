@@ -89,23 +89,26 @@ const Shop = () => {
           <p className="text-neutral-500 text-lg">No products found matching your filters</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {filteredProducts.map((product) => (
             <Link key={product.id} to={`/product/${product.id}`}>
               <div className="group bg-surface border border-border hover:border-brand-primary transition-all">
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="aspect-square bg-white p-4 flex items-center justify-center overflow-hidden">
                   <img src={product.image} alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="p-4">
-                  <h3 className="font-subheading text-white text-sm tracking-wider uppercase mb-2">{product.name}</h3>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="bg-brand-primary text-black px-3 py-1 text-sm font-bold">
+                <div className="p-3 md:p-4">
+                  <h3 className="font-subheading text-white text-xs md:text-sm tracking-wider uppercase mb-2 line-clamp-2">{product.name}</h3>
+                  <div className="flex flex-col gap-2 mb-2">
+                    <span className="bg-brand-primary text-black px-2 md:px-3 py-1 text-xs md:text-sm font-bold inline-block w-fit">
                       ₹{product.price?.toLocaleString()}
                     </span>
-                    <span className="text-neutral-500 text-xs uppercase tracking-wider">{product.gender}</span>
+                    <div className="flex items-center gap-2 text-neutral-500 text-xs">
+                      <span>{product.gender}</span>
+                      <span>•</span>
+                      <span>{product.category}</span>
+                    </div>
                   </div>
-                  <span className="text-neutral-500 text-xs uppercase tracking-wider">{product.category}</span>
                 </div>
               </div>
             </Link>

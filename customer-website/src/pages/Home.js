@@ -61,18 +61,18 @@ const Home = () => {
             <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent animate-spin" />
           </div>
         ) : featuredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`}>
                 <div className="group bg-surface border border-border hover:border-brand-primary transition-all">
-                  <div className="aspect-[4/5] overflow-hidden">
+                  <div className="aspect-square bg-white p-4 flex items-center justify-center overflow-hidden">
                     <img src={product.image} alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-subheading text-white text-sm tracking-wider uppercase mb-2">{product.name}</h3>
-                    <div className="flex items-center justify-between">
-                      <span className="bg-brand-primary text-black px-3 py-1 text-sm font-bold">
+                  <div className="p-3 md:p-4">
+                    <h3 className="font-subheading text-white text-xs md:text-sm tracking-wider uppercase mb-2 line-clamp-2">{product.name}</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                      <span className="bg-brand-primary text-black px-2 md:px-3 py-1 text-xs md:text-sm font-bold">
                         ₹{product.price?.toLocaleString()}
                       </span>
                       <span className="text-neutral-500 text-xs uppercase tracking-wider">{product.category}</span>
