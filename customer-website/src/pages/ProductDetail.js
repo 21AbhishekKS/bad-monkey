@@ -108,7 +108,7 @@ const ProductDetail = () => {
                     setSizeSystem(system);
                     setSelectedSize('');
                   }}
-                  className={`px-4 py-2 font-subheading text-xs tracking-wider uppercase transition-all ${
+                  className={`flex-1 sm:flex-none px-4 py-2 font-subheading text-xs tracking-wider uppercase transition-all ${
                     sizeSystem === system
                       ? 'bg-brand-primary text-black'
                       : 'bg-surface text-white border border-border hover:border-brand-primary'
@@ -120,12 +120,12 @@ const ProductDetail = () => {
             </div>
 
             {/* Size Options */}
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 md:gap-3">
               {availableSizes.map(size => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`py-3 font-subheading text-sm tracking-wider transition-all ${
+                  className={`py-2 md:py-3 font-subheading text-sm tracking-wider transition-all ${
                     selectedSize === size
                       ? 'bg-brand-primary text-black'
                       : 'bg-surface text-white border border-border hover:border-brand-primary'
