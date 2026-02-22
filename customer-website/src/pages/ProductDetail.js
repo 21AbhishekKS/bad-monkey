@@ -42,6 +42,10 @@ const ProductDetail = () => {
       alert('Please select a size');
       return;
     }
+    if (product.stock <= 0) {
+      alert('Sorry, this product is out of stock');
+      return;
+    }
     if (product) {
       addToCart(product, quantity, selectedSize);
       alert(`${product.name} (Size: ${selectedSize}) added to cart!`);
