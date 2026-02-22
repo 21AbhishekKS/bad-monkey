@@ -179,30 +179,32 @@ const Products = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product) => (
             <div key={product.id} className="bg-surface border border-border overflow-hidden">
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h3 className="text-white font-subheading text-sm tracking-wider uppercase mb-2">
+              <div className="aspect-square bg-white p-4 flex items-center justify-center">
+                <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+              </div>
+              <div className="p-3 md:p-4">
+                <h3 className="text-white font-subheading text-xs md:text-sm tracking-wider uppercase mb-2 line-clamp-2">
                   {product.name}
                 </h3>
-                <p className="text-brand-primary font-bold text-lg mb-2">
+                <p className="text-brand-primary font-bold text-base md:text-lg mb-2">
                   ₹{product.price?.toLocaleString()}
                 </p>
                 <p className="text-neutral-500 text-xs mb-3">
                   {product.category} • {product.gender} • Stock: {product.stock}
                 </p>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <button onClick={() => handleEdit(product)}
-                    className="flex-1 bg-background border border-border text-white px-4 py-2 hover:border-brand-primary transition-all flex items-center justify-center gap-2 text-sm">
+                    className="flex-1 bg-background border border-border text-white px-3 py-2 hover:border-brand-primary transition-all flex items-center justify-center gap-2 text-xs">
                     <Edit className="w-4 h-4" />
-                    Edit
+                    <span className="hidden sm:inline">Edit</span>
                   </button>
                   <button onClick={() => handleDelete(product.id)}
-                    className="flex-1 bg-background border border-border text-white px-4 py-2 hover:border-brand-secondary hover:text-brand-secondary transition-all flex items-center justify-center gap-2 text-sm">
+                    className="flex-1 bg-background border border-border text-white px-3 py-2 hover:border-brand-secondary hover:text-brand-secondary transition-all flex items-center justify-center gap-2 text-xs">
                     <Trash2 className="w-4 h-4" />
-                    Delete
+                    <span className="hidden sm:inline">Delete</span>
                   </button>
                 </div>
               </div>
